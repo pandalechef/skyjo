@@ -15,7 +15,6 @@ function creerToutesCartes() {
     toutesLesCartes.push(-2);
     toutesLesCartes.push(0);
   }
-  console.log(toutesLesCartes);
   return shuffle(toutesLesCartes);
 }
 const pioche = creerToutesCartes();

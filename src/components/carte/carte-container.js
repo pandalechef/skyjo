@@ -4,7 +4,6 @@ import { retournerCarte } from '../../actions/partie-action';
 import Carte from './carte';
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('ownProps', ownProps);
   return {
     tourJeu: state.partieReducer.tourJeu,
     couleur: state.joueurReducer[ownProps.joueur].couleur
