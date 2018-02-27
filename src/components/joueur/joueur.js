@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Grid } from "semantic-ui-react";
-import Carte from "../carte/carte";
-import "./joueur.css";
-import { slice } from "lodash";
+import React, { Component } from 'react';
+import { Grid } from 'semantic-ui-react';
+import Carte from '../carte/carte-container';
+import './joueur.css';
+import { slice } from 'lodash';
 class Joueur extends Component {
   render() {
     const cartes = this.props.joueur.cartes;
@@ -42,7 +42,7 @@ class Joueur extends Component {
       />
     ));
     return (
-      <div className={enCoursDeJeu ? "enCoursDeJeu" : ""}>
+      <div className={enCoursDeJeu ? 'enCoursDeJeu' : ''}>
         {this.props.joueur.nom}
         <Grid celled>
           <Grid.Row columns={nbColonnes}>{ligne1}</Grid.Row>

@@ -1,4 +1,4 @@
-export const CLIC_CARTE = "CLIC_CARTE";
+export const CLIC_CARTE = 'CLIC_CARTE';
 
 export function clicCarte(carte, idJoueur, carteAPlacer) {
   return dispatch => {

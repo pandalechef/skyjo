@@ -1,9 +1,6 @@
 import { connect } from 'react-redux';
 import Plateau from './plateau';
-import {
-  choixCarteAPlacer,
-  retirerCartePioche
-} from '../../actions/partie-action';
+import { choixCarteAPlacer } from '../../actions/partie-action';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -14,9 +11,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     choixCarteAPlacer: carteAPlacer => {
       dispatch(choixCarteAPlacer(carteAPlacer));
-    },
-    retirerCartePioche: () => {
-      dispatch(retirerCartePioche());
     }
   };
 };

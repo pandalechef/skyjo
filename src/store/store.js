@@ -3,7 +3,7 @@ import thunkMiddleware from 'redux-thunk';
 import joueurReducer from '../reducers/joueurReducer';
 import partieReducer from '../reducers/partieReducer';
 import { shuffle } from 'lodash';
-
+import { PROPOSITION_DEFAUSSE_OU_PIOCHE } from '../actions/partie-action';
 function creerToutesCartes() {
   const toutesLesCartes = [];
   for (let i = -1; i < 13; i++) {
@@ -55,6 +55,7 @@ const initialState = {
     }
   ],
   partieReducer: {
+    tourJeu: PROPOSITION_DEFAUSSE_OU_PIOCHE,
     idJoueurEnCours: 0,
     idJoueurGagnant: undefined,
     carteAPlacer: undefined,

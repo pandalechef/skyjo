@@ -3,10 +3,14 @@ import TourJeu from './tour-jeu';
 import { findKey } from 'lodash';
 import {
   choixCarteAPlacer,
-  retirerCartePioche
+  choixDefausse,
+  propostionPoubelleOuPioche,
+  jeterCarte,
+  jouerPioche
 } from '../../actions/partie-action';
 const mapStateToProps = (state, ownProps) => {
   return {
+    tourJeu: state.partieReducer.tourJeu,
     joueurGagnant:
       state.joueurReducer[
         findKey(state.joueurReducer, { toutVisible: true })
@@ -22,8 +26,17 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     choixCarteAPlacer: carteAPlacer => {
       dispatch(choixCarteAPlacer(carteAPlacer));
     },
-    retirerCartePioche: () => {
-      dispatch(retirerCartePioche());
+    choixDefausse: carteDefausse => {
+      dispatch(choixDefausse(carteDefausse));
+    },
+    propostionPoubelleOuPioche: () => {
+      dispatch(propostionPoubelleOuPioche());
+    },
+    jeterCarte: () => {
+      dispatch(jeterCarte());
+    },
+    jouerPioche: () => {
+      dispatch(jouerPioche());
     }
   };
 };
