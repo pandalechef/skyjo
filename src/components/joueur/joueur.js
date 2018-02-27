@@ -42,7 +42,11 @@ class Joueur extends Component {
       />
     ));
     return (
-      <div className={enCoursDeJeu ? 'enCoursDeJeu' : ''}>
+      <div
+        className={
+          enCoursDeJeu ? `enCoursDeJeu-${this.props.joueur.couleur}` : ''
+        }
+      >
         {this.props.joueur.nom}
         <Grid celled>
           <Grid.Row columns={nbColonnes}>{ligne1}</Grid.Row>

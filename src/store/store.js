@@ -32,24 +32,28 @@ const initialState = {
     {
       id: 0,
       nom: 'julien',
+      couleur: 'bleu',
       toutVisible: false,
       cartes: tirerDouzeCartes()
     },
     {
       id: 1,
       nom: 'aurélie',
+      couleur: 'rouge',
       toutVisible: false,
       cartes: tirerDouzeCartes()
     },
     {
       id: 2,
       nom: 'camille',
+      couleur: 'vert',
       toutVisible: false,
       cartes: tirerDouzeCartes()
     },
     {
       id: 3,
       nom: 'panda',
+      couleur: 'jaune',
       toutVisible: false,
       cartes: tirerDouzeCartes()
     }

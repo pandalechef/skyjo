@@ -1,4 +1,16 @@
-.enCoursDeJeu {
+.enCoursDeJeu-bleu {
   border-color: blue;
+  border-style: solid;
+}
+.enCoursDeJeu-rouge {
+  border-color: red;
+  border-style: solid;
+}
+.enCoursDeJeu-vert {
+  border-color: green;
+  border-style: solid;
+}
+.enCoursDeJeu-jaune {
+  border-color: yellow;
   border-style: solid;
 }

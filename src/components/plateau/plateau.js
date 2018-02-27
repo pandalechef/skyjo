@@ -1,6 +1,5 @@
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
-import './plateau.css';
 import JoueurContainer from '../joueur/joueur-container';
 import TourJeuContainer from '../tour-jeu/tour-jeu-container';
 

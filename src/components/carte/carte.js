@@ -24,6 +24,7 @@ class Carte extends Component {
   }
 
   render() {
+    console.log('couleur ' + this.props.couleur);
     const { valeur, visible } = this.props.carte;
     return (
       <Grid.Column
@@ -32,7 +33,7 @@ class Carte extends Component {
           (this.props.carteAPlacer ||
             this.props.carteAPlacer === 0 ||
             this.props.tourJeu === CHOIX_MISE_POUBELLE)
-            ? 'carte'
+            ? `carte-${this.props.couleur}`
             : ''
         }
         onClick={this.handleClick}
