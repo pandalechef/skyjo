@@ -1,25 +1,26 @@
-import { CLIC_CARTE } from '../actions/carte-action';
-import { CARTE_RETOURNEE } from '../actions/partie-action';
+import { CARTE_REMPLACEE, CARTE_RETOURNEE } from '../actions/carte-action';
 import { find, reduce } from 'lodash';
 const joueurReducer = (state, action) => {
   switch (action.type) {
-    case CLIC_CARTE:
-      return stateClicCarte(state, action);
+    case CARTE_REMPLACEE:
+      return mettreAjourState(state, action);
     case CARTE_RETOURNEE:
-      return stateRetournerCarte(state, action);
+      return mettreAjourState(state, action);
     default:
       return state;
   }
 };
 
-function stateClicCarte(state, action) {
+function mettreAjourState(state, action) {
   const idJoueur = action.idJoueur;
   const idCarte = action.carte.position;
   const newCarte = { ...state[idJoueur].cartes[idCarte] };
+  newCarte.visible = true;
+  if (action.type === CARTE_REMPLACEE) {
+    newCarte.valeur = action.carteAPlacer;
+  }
   const newJoueur = { ...state[idJoueur] };
   const newState = Object.assign({}, state);
-  newCarte.visible = true;
-  newCarte.valeur = action.carteAPlacer;
   newJoueur.cartes[idCarte] = newCarte;
   estToutVisible(newJoueur);
   newState[idJoueur] = newJoueur;
@@ -29,21 +30,6 @@ function stateClicCarte(state, action) {
   return newState;
 }
 
-function stateRetournerCarte(state, action) {
-  const idJoueur = action.idJoueur;
-  const idCarte = action.carte.position;
-  const newCarte = { ...state[idJoueur].cartes[idCarte] };
-  const newJoueur = { ...state[idJoueur] };
-  const newState = Object.assign({}, state);
-  newCarte.visible = true;
-  newJoueur.cartes[idCarte] = newCarte;
-  estToutVisible(newJoueur);
-  newState[idJoueur] = newJoueur;
-  if (newJoueur.toutVisible) {
-    totalPointsToutJoueur(newState);
-  }
-  return newState;
-}
 function estToutVisible(newJoueur) {
   const cartes = newJoueur.cartes;
   const cartesNonVisibles = find(cartes, { visible: false });

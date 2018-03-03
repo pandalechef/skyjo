@@ -1,20 +1,20 @@
 import { connect } from 'react-redux';
-import { clicCarte } from '../../actions/carte-action';
-import { retournerCarte } from '../../actions/partie-action';
+import { remplacerCarte, retournerCarte } from '../../actions/carte-action';
 import Carte from './carte';
 
 const mapStateToProps = (state, ownProps) => {
   return {
     tourJeu: state.partieReducer.tourJeu,
     couleur: state.joueurReducer[ownProps.idJoueur].couleur,
-    carteAPlacer: state.partieReducer.carteAPlacer
+    carteAPlacer: state.partieReducer.carteAPlacer,
+    enCoursDeJeu: state.partieReducer.idJoueurEnCours === ownProps.idJoueur
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    clicCarte: (carte, idJoueur, carteAPlacer) => {
-      dispatch(clicCarte(carte, idJoueur, carteAPlacer));
+    remplacerCarte: (carte, idJoueur, carteAPlacer) => {
+      dispatch(remplacerCarte(carte, idJoueur, carteAPlacer));
     },
     retournerCarte: (carte, idJoueur) => {
       dispatch(retournerCarte(carte, idJoueur));

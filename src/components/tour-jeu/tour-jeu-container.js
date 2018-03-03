@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import TourJeu from './tour-jeu';
 import { findKey } from 'lodash';
 import {
-  choixCarteAPlacer,
   choixDefausse,
   propostionPoubelleOuPioche,
   jeterCarte,
@@ -24,9 +23,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    choixCarteAPlacer: carteAPlacer => {
-      dispatch(choixCarteAPlacer(carteAPlacer));
-    },
     choixDefausse: carteDefausse => {
       dispatch(choixDefausse(carteDefausse));
     },

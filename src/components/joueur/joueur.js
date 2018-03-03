@@ -11,19 +11,13 @@ class Joueur extends Component {
     const idJoueur = this.props.joueur.id;
     const enCoursDeJeu = this.props.enCoursDeJeu;
     const ligne1 = slice(cartes, 0, nbColonnes).map((c, i) => (
-      <Carte
-        key={c.position}
-        idJoueur={idJoueur}
-        carte={cartes[i]}
-        enCoursDeJeu={enCoursDeJeu}
-      />
+      <Carte key={c.position} idJoueur={idJoueur} carte={cartes[i]} />
     ));
     const ligne2 = slice(cartes, nbColonnes, nbColonnes * 2).map((c, i) => (
       <Carte
         key={c.position}
         idJoueur={idJoueur}
         carte={cartes[nbColonnes + i]}
-        enCoursDeJeu={enCoursDeJeu}
       />
     ));
     const ligne3 = slice(cartes, nbColonnes * 2, nbCartes).map((c, i) => (
@@ -31,7 +25,6 @@ class Joueur extends Component {
         key={c.position}
         idJoueur={idJoueur}
         carte={cartes[nbColonnes * 2 + i]}
-        enCoursDeJeu={enCoursDeJeu}
       />
     ));
     return (

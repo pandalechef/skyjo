@@ -8,37 +8,41 @@ class Carte extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick(event) {
-    if (
-      this.props.tourJeu === CHOIX_MISE_POUBELLE &&
+    const carte = this.props.carte;
+    const idJoueur = this.props.idJoueur;
+    if (this.casRetournerCarte()) {
+      this.props.retournerCarte(carte, idJoueur);
+    }
+    if (this.casRemplacerCarte()) {
+      this.props.remplacerCarte(carte, idJoueur, this.props.carteAPlacer);
+    }
+  }
+
+  casRetournerCarte() {
+    return this.props.tourJeu === CHOIX_MISE_POUBELLE &&
       this.props.carte.visible === false
-    ) {
-      this.props.retournerCarte(this.props.carte, this.props.idJoueur);
-    }
-    if (
-      (this.props.carteAPlacer || this.props.carteAPlacer === 0) &&
+      ? true
+      : false;
+  }
+
+  casRemplacerCarte() {
+    return (this.props.carteAPlacer || this.props.carteAPlacer === 0) &&
       this.props.enCoursDeJeu
-    ) {
-      this.props.clicCarte(
-        this.props.carte,
-        this.props.idJoueur,
-        this.props.carteAPlacer
-      );
-    }
+      ? true
+      : false;
   }
 
   render() {
     const { valeur, visible } = this.props.carte;
+    const estCliquable =
+      this.props.enCoursDeJeu &&
+      (this.props.carteAPlacer ||
+        this.props.carteAPlacer === 0 ||
+        (this.props.tourJeu === CHOIX_MISE_POUBELLE &&
+          this.props.carte.visible === false));
     return (
       <Grid.Column
-        className={
-          this.props.enCoursDeJeu &&
-          (this.props.carteAPlacer ||
-            this.props.carteAPlacer === 0 ||
-            (this.props.tourJeu === CHOIX_MISE_POUBELLE &&
-              this.props.carte.visible === false))
-            ? `carte-${this.props.couleur}`
-            : ''
-        }
+        className={estCliquable ? `carte-${this.props.couleur}` : ''}
         onClick={this.handleClick}
       >
         {visible ? valeur : '?'}

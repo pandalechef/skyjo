@@ -1,30 +1,18 @@
 import * as constantes from '../actions/partie-action';
-import { CLIC_CARTE } from '../actions/carte-action';
+import { CARTE_REMPLACEE, CARTE_RETOURNEE } from '../actions/carte-action';
 import { clone } from 'lodash';
 
 const partieReducer = (state, action) => {
   const nouveauState = Object.assign({}, state);
   switch (action.type) {
-    case constantes.CHOIX_CARTE_A_PLACER:
-      const newState = Object.assign({}, state, {
-        carteAPlacer: action.carteAPlacer
-      });
-      return newState;
-    case CLIC_CARTE:
+    case CARTE_REMPLACEE:
+      const majDefausse = clone(state.defausse);
       if (state.tourJeu === constantes.CHOIX_DEFAUSSE) {
-        const newDefausse = clone(state.defausse);
-        newDefausse.shift();
-        newDefausse.unshift(action.carte.valeur);
-        nouveauState.defausse = newDefausse;
-        initialiserDebutTourJeu(nouveauState, action);
-        return nouveauState;
-      } else if (state.tourJeu === constantes.CHOIX_JOUER_CARTE_PIOCHE) {
-        const newDefausse = clone(state.defausse);
-        newDefausse.unshift(action.carte.valeur);
-        nouveauState.defausse = newDefausse;
-        initialiserDebutTourJeu(nouveauState, action);
-        return nouveauState;
+        majDefausse.shift();
       }
+      majDefausse.unshift(action.carte.valeur);
+      nouveauState.defausse = majDefausse;
+      initialiserDebutTourJeu(nouveauState, action);
       return nouveauState;
     case constantes.CHOIX_DEFAUSSE:
       nouveauState.tourJeu = constantes.CHOIX_DEFAUSSE;
@@ -47,7 +35,7 @@ const partieReducer = (state, action) => {
       newPioche.shift();
       nouveauState.pioche = newPioche;
       return nouveauState;
-    case constantes.CARTE_RETOURNEE:
+    case CARTE_RETOURNEE:
       initialiserDebutTourJeu(nouveauState, action);
       return nouveauState;
     default:

@@ -1,12 +1,23 @@
-export const CLIC_CARTE = 'CLIC_CARTE';
+export const CARTE_REMPLACEE = 'CARTE_REMPLACEE';
+export const CARTE_RETOURNEE = 'CARTE_RETOURNEE';
 
-export function clicCarte(carte, idJoueur, carteAPlacer) {
+export function remplacerCarte(carte, idJoueur, carteAPlacer) {
   return dispatch => {
     dispatch({
-      type: CLIC_CARTE,
+      type: CARTE_REMPLACEE,
       carte: carte,
       idJoueur: idJoueur,
       carteAPlacer: carteAPlacer
+    });
+  };
+}
+
+export function retournerCarte(carte, idJoueur) {
+  return dispatch => {
+    dispatch({
+      type: CARTE_RETOURNEE,
+      carte: carte,
+      idJoueur: idJoueur
     });
   };
 }
