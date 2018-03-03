@@ -8,7 +8,7 @@ function creerToutesCartes() {
   const toutesLesCartes = [];
   for (let i = -1; i < 13; i++) {
     for (let j = 0; j < 10; j++) {
-      toutesLesCartes.push(i);
+      toutesLesCartes.push(1);
     }
   }
   for (let i = 0; i < 5; i++) {
@@ -33,6 +33,7 @@ const initialState = {
       nom: 'julien',
       couleur: 'bleu',
       toutVisible: false,
+      colonneIdentique: undefined,
       cartes: tirerDouzeCartes()
     },
     {
@@ -40,6 +41,7 @@ const initialState = {
       nom: 'aurélie',
       couleur: 'rouge',
       toutVisible: false,
+      colonneIdentique: undefined,
       cartes: tirerDouzeCartes()
     },
     {
@@ -47,6 +49,7 @@ const initialState = {
       nom: 'camille',
       couleur: 'vert',
       toutVisible: false,
+      colonneIdentique: undefined,
       cartes: tirerDouzeCartes()
     },
     {
@@ -54,6 +57,7 @@ const initialState = {
       nom: 'panda',
       couleur: 'jaune',
       toutVisible: false,
+      colonneIdentique: undefined,
       cartes: tirerDouzeCartes()
     }
   ],

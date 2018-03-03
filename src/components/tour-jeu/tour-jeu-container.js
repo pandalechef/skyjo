@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import TourJeu from './tour-jeu';
-import { findKey } from 'lodash';
+import { findKey, filter } from 'lodash';
 import {
   choixDefausse,
   propostionPoubelleOuPioche,
@@ -18,7 +18,11 @@ const mapStateToProps = (state, ownProps) => {
     joueurs: Object.values(state.joueurReducer),
     pioche: state.partieReducer.pioche,
     defausse: state.partieReducer.defausse[0],
-    carteAPlacer: state.partieReducer.carteAPlacer
+    carteAPlacer: state.partieReducer.carteAPlacer,
+    colonneIdentique: filter(
+      state.joueurReducer,
+      j => j.colonneIdentique || j.colonneIdentique === 0
+    )
   };
 };
 const mapDispatchToProps = (dispatch, ownProps) => {
