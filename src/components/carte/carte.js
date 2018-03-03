@@ -8,7 +8,10 @@ class Carte extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick(event) {
-    if (this.props.tourJeu === CHOIX_MISE_POUBELLE) {
+    if (
+      this.props.tourJeu === CHOIX_MISE_POUBELLE &&
+      this.props.carte.visible === false
+    ) {
       this.props.retournerCarte(this.props.carte, this.props.joueur);
     }
     if (
@@ -32,7 +35,8 @@ class Carte extends Component {
           this.props.enCoursDeJeu &&
           (this.props.carteAPlacer ||
             this.props.carteAPlacer === 0 ||
-            this.props.tourJeu === CHOIX_MISE_POUBELLE)
+            (this.props.tourJeu === CHOIX_MISE_POUBELLE &&
+              this.props.carte.visible === false))
             ? `carte-${this.props.couleur}`
             : ''
         }

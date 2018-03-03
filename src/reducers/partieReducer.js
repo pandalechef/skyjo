@@ -38,6 +38,7 @@ const partieReducer = (state, action) => {
       const newDefausse = clone(state.defausse);
       newDefausse.unshift(state.pioche[0]);
       nouveauState.defausse = newDefausse;
+      nouveauState.pioche.shift();
       return nouveauState;
     case constantes.CHOIX_JOUER_CARTE_PIOCHE:
       nouveauState.tourJeu = constantes.CHOIX_JOUER_CARTE_PIOCHE;
