@@ -12,22 +12,21 @@ class Carte extends Component {
       this.props.tourJeu === CHOIX_MISE_POUBELLE &&
       this.props.carte.visible === false
     ) {
-      this.props.retournerCarte(this.props.carte, this.props.joueur);
+      this.props.retournerCarte(this.props.carte, this.props.idJoueur);
     }
     if (
       (this.props.carteAPlacer || this.props.carteAPlacer === 0) &&
       this.props.enCoursDeJeu
     ) {
-      this.props.onClickFct(
+      this.props.clicCarte(
         this.props.carte,
-        this.props.joueur,
+        this.props.idJoueur,
         this.props.carteAPlacer
       );
     }
   }
 
   render() {
-    console.log('couleur ' + this.props.couleur);
     const { valeur, visible } = this.props.carte;
     return (
       <Grid.Column

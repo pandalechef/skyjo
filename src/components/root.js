@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import PlateauContainer from "./plateau/plateau-container";
+import React, { Component } from 'react';
+import Plateau from './plateau';
 
 class App extends Component {
   render() {
-    return <PlateauContainer />;
+    return <Plateau />;
   }
 }
 

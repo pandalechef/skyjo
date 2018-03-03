@@ -1,23 +1,12 @@
-import { connect } from "react-redux";
-import Joueur from "./joueur";
-import { find } from "lodash";
-import { clicCarte } from "../../actions/carte-action";
+import { connect } from 'react-redux';
+import Joueur from './joueur';
+import { find } from 'lodash';
 
 const mapStateToProps = (state, ownProps) => {
   return {
     joueur: find(state.joueurReducer, { id: +ownProps.id }) || {},
-    enCoursDeJeu: ownProps.idJoueurEnCours === ownProps.id,
-    carteAPlacer: state.partieReducer.carteAPlacer
+    enCoursDeJeu: state.partieReducer.idJoueurEnCours === ownProps.id
   };
 };
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    clicCarte: (carte, idJoueur, carteAPlacer) => {
-      dispatch(clicCarte(carte, idJoueur, carteAPlacer));
-    }
-  };
-};
-
-const JoueurContainer = connect(mapStateToProps, mapDispatchToProps)(Joueur);
+const JoueurContainer = connect(mapStateToProps)(Joueur);
 export default JoueurContainer;

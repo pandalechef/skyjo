@@ -6,7 +6,8 @@ import Carte from './carte';
 const mapStateToProps = (state, ownProps) => {
   return {
     tourJeu: state.partieReducer.tourJeu,
-    couleur: state.joueurReducer[ownProps.joueur].couleur
+    couleur: state.joueurReducer[ownProps.idJoueur].couleur,
+    carteAPlacer: state.partieReducer.carteAPlacer
   };
 };
 

@@ -8,6 +8,7 @@ import {
   jeterCarte,
   jouerPioche
 } from '../../actions/partie-action';
+
 const mapStateToProps = (state, ownProps) => {
   return {
     tourJeu: state.partieReducer.tourJeu,
