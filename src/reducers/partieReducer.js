@@ -45,7 +45,8 @@ const partieReducer = (state, action) => {
 
 function initialiserDebutTourJeu(state, action) {
   state.carteAPlacer = undefined;
-  state.idJoueurEnCours = action.idJoueur === 3 ? 0 : action.idJoueur + 1;
+  state.idJoueurEnCours =
+    action.idJoueur === state.nbJoueurs - 1 ? 0 : action.idJoueur + 1;
   state.tourJeu = constantes.PROPOSITION_DEFAUSSE_OU_PIOCHE;
 }
 export default function(state = {}, action) {

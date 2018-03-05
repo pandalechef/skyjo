@@ -1,1 +1,1 @@
-export { default } from './plateau';
+export { default } from './plateau-container';

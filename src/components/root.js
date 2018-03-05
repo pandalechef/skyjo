@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Plateau from './plateau';
 
-class App extends Component {
+class Root extends Component {
   render() {
     return <Plateau />;
   }
 }
 
-export default App;
+export default Root;

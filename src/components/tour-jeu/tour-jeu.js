@@ -34,18 +34,23 @@ export default class TourJeu extends React.Component {
       this.props.colonneIdentique.length !== 0
         ? this.props.colonneIdentique[0].colonneIdentique
         : undefined;
+    const bienJoue = valeurCarteColonneIdentique ? (
+      <Grid.Row centered columns={2}>
+        <Grid.Column width={8} textAlign="right" verticalAlign="middle">
+          {valeurCarteColonneIdentique
+            ? `Bien joué ${
+                this.props.colonneIdentique[0].nom
+              }, trois cartes de valeur ${valeurCarteColonneIdentique} sur une même colonne ont été supprimées`
+            : ''}
+        </Grid.Column>
+      </Grid.Row>
+    ) : (
+      ''
+    );
     if (tourJeu === action.PROPOSITION_DEFAUSSE_OU_PIOCHE) {
       return (
         <Grid container>
-          <Grid.Row centered columns={2}>
-            <Grid.Column width={10} textAlign="right" verticalAlign="middle">
-              {valeurCarteColonneIdentique
-                ? `Bien joué ${
-                    this.props.colonneIdentique[0].nom
-                  }, trois cartes de valeur ${valeurCarteColonneIdentique} sur une même colonne conduit à sa suppression`
-                : ''}
-            </Grid.Column>
-          </Grid.Row>
+          {bienJoue}
           <Grid.Row>
             <Grid.Column width={3} textAlign="right" verticalAlign="middle">
               Défausse

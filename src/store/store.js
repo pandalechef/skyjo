@@ -64,6 +64,7 @@ const initialState = {
   partieReducer: {
     tourJeu: PROPOSITION_DEFAUSSE_OU_PIOCHE,
     idJoueurEnCours: 0,
+    nbJoueurs: 4,
     idJoueurGagnant: undefined,
     carteAPlacer: undefined,
     defausse: [pioche.shift()],
