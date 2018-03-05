@@ -8,7 +8,7 @@ function creerToutesCartes() {
   const toutesLesCartes = [];
   for (let i = -1; i < 13; i++) {
     for (let j = 0; j < 10; j++) {
-      toutesLesCartes.push(1);
+      toutesLesCartes.push(i);
     }
   }
   for (let i = 0; i < 5; i++) {
