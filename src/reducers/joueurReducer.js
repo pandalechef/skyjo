@@ -1,7 +1,24 @@
+import { DEFINIR_JOUEURS } from '../actions/nouvelle-partie-action.js';
 import { CARTE_REMPLACEE, CARTE_RETOURNEE } from '../actions/carte-action';
-import { find, reduce, map } from 'lodash';
+import { find, reduce, map, forEach } from 'lodash';
+
 const joueurReducer = (state, action) => {
   switch (action.type) {
+    case DEFINIR_JOUEURS:
+      console.log('réducer');
+      const newState = Object.assign({}, state);
+      forEach(
+        action.joueurs,
+        (j, i) =>
+          (newState[i] = {
+            id: j.id - 1,
+            nom: j.nom,
+            couleur: j.couleur,
+            toutVisible: false,
+            cartes: j.cartes
+          })
+      );
+      return newState;
     case CARTE_REMPLACEE:
       return mettreAjourState(state, action);
     case CARTE_RETOURNEE:

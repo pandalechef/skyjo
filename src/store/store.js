@@ -19,16 +19,17 @@ function creerToutesCartes() {
 }
 const pioche = creerToutesCartes();
 
-function tirerDouzeCartes() {
+/*function tirerDouzeCartes() {
   const tasCartes = [];
   for (let i = 0; i < 12; i++) {
     tasCartes.push({ position: i, valeur: pioche.shift(), visible: false });
   }
   return tasCartes;
-}
+}*/
+
 const initialState = {
   joueurReducer: [
-    {
+    /*{
       id: 0,
       nom: 'julien',
       couleur: 'bleu',
@@ -59,12 +60,12 @@ const initialState = {
       toutVisible: false,
       colonneIdentique: undefined,
       cartes: tirerDouzeCartes()
-    }
+    }*/
   ],
   partieReducer: {
     tourJeu: PROPOSITION_DEFAUSSE_OU_PIOCHE,
     idJoueurEnCours: 0,
-    nbJoueurs: 4,
+    nbJoueurs: 0,
     idJoueurGagnant: undefined,
     carteAPlacer: undefined,
     defausse: [pioche.shift()],

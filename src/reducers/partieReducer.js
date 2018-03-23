@@ -1,10 +1,15 @@
 import * as constantes from '../actions/partie-action';
+import { DEFINIR_JOUEURS } from '../actions/nouvelle-partie-action.js';
 import { CARTE_REMPLACEE, CARTE_RETOURNEE } from '../actions/carte-action';
 import { clone } from 'lodash';
 
 const partieReducer = (state, action) => {
   const nouveauState = Object.assign({}, state);
   switch (action.type) {
+    case DEFINIR_JOUEURS:
+      nouveauState.nbJoueurs = action.joueurs.length;
+      nouveauState.pioche = action.pioche;
+      return nouveauState;
     case CARTE_REMPLACEE:
       const majDefausse = clone(state.defausse);
       if (state.tourJeu === constantes.CHOIX_DEFAUSSE) {
